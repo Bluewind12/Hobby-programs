@@ -92,13 +92,22 @@ public class TextCount extends Application {
             String buff;
             String str = "";
             while ((buff = br.readLine()) != null) {
+                if (str != "") {
+                    str += "\n";
+                }
                 str += buff;
-                str += "\n";
+                str += "";
             }
             label.setText(str);
             br.close();
         } catch (Exception ex) {
         }
+        String data = label.getText().replace(" ", "");
+        data = data.replace("\t", "");
+        data = data.replace("\n", "");
+        data = data.replace("Å@", "");
+        String value = "ï∂éöêîÅF" + data.length() + "ï∂éö";
+        stage.setTitle(value);
     }
 
     void saveFile(Stage stage, TextArea label) {
