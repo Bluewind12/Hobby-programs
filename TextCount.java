@@ -12,20 +12,20 @@ public class TextCount extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        TextArea label = new TextArea("Hello JavaFX!");
+        stage.setTitle("•¶š”F0•¶š");
+        TextArea label = new TextArea("");
         label.textProperty().addListener((obs, old, niu) -> {
             String data = label.getText().replace(" ", "");
             data = data.replace("\t", "");
             data = data.replace("\n", "");
             data = data.replace("@", "");
-
-            String value = "•¶š”" + data.length();
+            String value = "•¶š”F" + data.length() + "•¶š";
             stage.setTitle(value);
         });
         label.setWrapText(true);
         BorderPane pane = new BorderPane();
         pane.setCenter(label);
-        Scene scene = new Scene(pane, 320, 240);
+        Scene scene = new Scene(pane, 560, 400);
         stage.setScene(scene);
         stage.show();
     }
