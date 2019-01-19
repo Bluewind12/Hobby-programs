@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -38,6 +39,15 @@ public class TextCount extends Application {
             stage.setTitle(value);
         });
         label.setWrapText(true);
+
+        label.setOnMouseClicked(e -> {
+            String data = label.getSelectedText();
+            data = data.replace("\t", "");
+            data = data.replace("\n", "");
+            data = data.replace("　", "");
+            String value = "選択範囲文字数：" + data.length() + "文字";
+            stage.setTitle(value);
+        });
 
         MenuBar menuBar = new MenuBar();
         Menu menuFile = new Menu("ファイル");
@@ -118,7 +128,7 @@ public class TextCount extends Application {
         File file = fileChooser.showOpenDialog(stage);
         try {
             FileWriter filewriter = new FileWriter(file);
-            filewriter.write(label.getText());
+            filewriter.write(label.getText().toString());
             filewriter.close();
         } catch (Exception ex) {
         }
